@@ -1,0 +1,15 @@
+/* Hero One */
+.hero {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.hero .hero__right {
+  width: 50%;
+}
+
+.hero .hero__right img {
+  width: 100%;
+}
+/*# sourceMappingURL=Hero.css.map */
