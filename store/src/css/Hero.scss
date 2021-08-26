@@ -87,6 +87,11 @@ $breakpoints: (
         font-size: 4.2rem;
         margin-bottom: 5px;
         margin-top: 0px;
+
+        @include respond-to('small-medium') {
+          font-size: 3.5rem;
+          height: max-content;
+        }
       }
    
       &__body {

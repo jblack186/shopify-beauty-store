@@ -1,0 +1,94 @@
+$primaryColor: #f5b6a7;
+$secondaryColor: #966060;
+$accentColor: #fef7ee;
+
+$breakpoints: (
+  'small':  ( max-width:  767px ),
+  'small-medium': ( max-width:  868px ),
+
+  'medium': ( max-width:  992px ),
+
+  'large':  ( max-width: 1200px )
+) !default;
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// footer one
+
+.footer {
+  margin-top: 50px;
+  min-height: 300px;
+  width: 100%;
+  background: $secondaryColor;
+  display: flex;
+  align-items: center;
+  color: white;
+
+
+
+  &__content {
+    height: 300px;
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-wrap: wrap;
+
+    &__heading {
+      width: 30%;
+      font-size: 2.5rem;
+    }
+
+    &__nav {
+      width: 30%;
+      ul {
+        height: 200px;
+
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+  
+  
+        li {
+          list-style: none;
+        }
+      }
+    }
+  &__icons {
+    width: 30%;
+    display: flex;
+    justify-content: space-evenly;
+    
+    @include respond-to('medium') {
+      height: 200px;
+
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-around;
+}
+
+    
+  }
+
+  }
+
+}
