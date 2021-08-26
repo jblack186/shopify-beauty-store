@@ -1,8 +1,46 @@
+$breakpoints: (
+  "small": (
+    max-width: 767px,
+  ),
+  "small-medium": (
+    max-width: 868px,
+  ),
+  "medium": (
+    max-width: 992px,
+  ),
+  "large": (
+    max-width: 1200px,
+  ),
+) !default;
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+// header one
 .header {
   width: 100%;
   min-height: 60px;
+  @include respond-to("small") {
+    display: flex;
+    align-items: center;
+  }
 
- 
   &__list {
     width: 90%;
     margin: 0 auto;
@@ -10,7 +48,9 @@
     justify-content: space-between;
     align-items: center;
     padding-left: 0;
-
+    @include respond-to("small") {
+      display: none;
+    }
 
     &__left {
       list-style: none;
@@ -22,7 +62,6 @@
     }
 
     &__mid {
-
     }
 
     &__right {
@@ -32,10 +71,21 @@
       &__item {
         margin-left: 28px;
       }
-
-
     }
   }
 
+  // header two
 
+  // mobile
+  .mobile {
+    display: none;
+    @include respond-to("small") {
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 90%;
+      margin: 0 auto;
+    }
+  }
 }

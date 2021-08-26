@@ -1,0 +1,74 @@
+$primaryColor: #f5b6a7;
+$secondaryColor: #966060;
+$accentColor: #fef7ee;
+
+$breakpoints: (
+  'small':  ( max-width:  767px ),
+  'small-medium': ( max-width:  868px ),
+
+  'medium': ( max-width:  992px ),
+
+  'large':  ( max-width: 1200px )
+) !default;
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
+
+
+
+.featured {
+  min-height: 500px;
+  width: 100%;
+  background: $accentColor;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-bottom: 30px;
+
+&__heading {
+  margin-bottom: 30px;
+  margin-top: 30px
+}
+  &__content {
+    display: flex;
+    margin: 0 auto;
+    width: 90%;
+    justify-content: space-evenly;
+    align-items: center;
+    text-align: center;
+    flex-wrap: wrap;
+
+    &__item {
+      margin-top: 40px;
+
+      img {
+      width: 300px;
+      }
+
+      button {
+        background: $secondaryColor;
+        color: white;
+        border: none;
+        height: 35px;
+        width: 180px;
+      }
+    }
+  }
+}

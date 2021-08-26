@@ -5,10 +5,15 @@ import Bag from '../img/bag.svg';
 import Search from '../img/search.svg';
 import Menu from '../img/menu.svg';
 
+
 function Header() {
   return (
     <div className="header">
       <ul className="header__list">
+      <div className="header__list__mid">
+            <h1 className="header__list__mid__logo">honest</h1>
+        </div>
+
         <div className="header__list__left">
           <li className="header__list__left__item">
             SHOP
@@ -20,9 +25,6 @@ function Header() {
             CONTACT
           </li>
           </div>
-          <div className="header__list__mid">
-            <h1 className="header__list__mid__logo">honest</h1>
-        </div>
         <div className="header__list__right">
           <li className="header__list__right__item">
             <img style={{width: '20px'}} className="header__list__right__item--search" src={Search} alt="search" />

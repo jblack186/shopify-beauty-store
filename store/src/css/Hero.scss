@@ -1,16 +1,70 @@
+$primaryColor: #f5b6a7;
+$secondaryColor: #966060;
+$accentColor: #fef7ee;
+
+
 /* Hero One */
 
+
+
+$breakpoints: (
+  'small':  ( max-width:  767px ),
+  'small-medium': ( max-width:  868px ),
+
+  'medium': ( max-width:  992px ),
+
+  'large':  ( max-width: 1200px )
+) !default;
+/// Mixin to manage responsive breakpoints
+/// @author Kitty Giraudel
+/// @param {String} $breakpoint - Breakpoint name
+/// @require $breakpoints
+@mixin respond-to($breakpoint) {
+  // If the key exists in the map
+  @if map-has-key($breakpoints, $breakpoint) {
+    // Prints a media query based on the value
+    @media #{inspect(map-get($breakpoints, $breakpoint))} {
+      @content;
+    }
+  }
+ 
+  // If the key doesn't exist in the map
+  @else {
+    @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+        + "Available breakpoints are: #{map-keys($breakpoints)}.";
+  }
+}
 
 .hero {
   display: flex;
   max-height: 90vh;
 
+  @include respond-to('large') {
+    max-height: 100%;
+  }
+
   &__left {
+    background: $accentColor;
+    position: relative;
     width: 60%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: space-around;
+
+    @include respond-to('small-medium') {
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+      height: 100vh;
+      margin: 0 auto;
+      background: url('../img/model.jpg');
+      background-position: center;
+      background-size: cover;
+    
+
+          }
+      
 
 
     &__emptySpace {
@@ -21,6 +75,13 @@
       width: 90%;
       margin: 0 auto;
       align-self: flex-start;
+      position: relative;
+      z-index: 3;
+
+
+      @include respond-to('small-medium') {
+        color: white;
+      }
 
       &__heading {
         font-size: 4.2rem;
@@ -40,6 +101,16 @@
       height: 30%;
       display: flex;
       justify-content: space-between;
+      @include respond-to('medium') {
+        flex-direction: column-reverse;
+        height: 100%;
+
+        @include respond-to('small-medium') {
+          display: none;
+              }
+          
+      }
+
 
       ul {
         width: 30%;
@@ -59,8 +130,13 @@
 
         img {
           width: 300px;
-          height: 100%;
+          height: 200px;
           object-fit: cover;
+          @include respond-to('large') {
+            width: 330px;
+            object-fit: cover;
+
+          }
   
         }
       }
@@ -78,13 +154,35 @@
         border: 1px solid black;
         z-index: 5;
         font-weight: 600;
+
+        @include respond-to('large') {
+          display: none;
+        }
       }
 
     }
   }
 
+  &__left::before {
+   
+    @include respond-to('small-medium') {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      background: black;
+      opacity: .5;
+      width: 100%;
+      height: 100%;
+      z-index: 2;
+      }
+  }
+
   &__right {
     width: 40%;
+    @include respond-to('small-medium') {
+display: none;
+    }
     img {
       width: 100%;
       height: 100%;
@@ -92,3 +190,5 @@
     }
   }
 }
+
+
