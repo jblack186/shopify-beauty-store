@@ -3,10 +3,12 @@ import "../css/Hero.scss";
 import { Link } from "react-router-dom";
 import Model from "../img/model.jpg";
 import Makeup from "../img/makeup.jpg";
+import Sale from "../img/sale.svg";
 
 function HeroOne() {
   return (
     <section className="hero">
+      <img src={Sale} className="hero__sale" alt="sale" />
       <div className="hero__left">
       <div className="hero__left__emptySpace"></div>
 

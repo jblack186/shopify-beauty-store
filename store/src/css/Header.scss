@@ -31,14 +31,27 @@ $breakpoints: (
         + "Available breakpoints are: #{map-keys($breakpoints)}.";
   }
 }
-
 // header one
 .header {
+  background: white;
+  position: fixed;
+  z-index: 9;
+  top: 0;
+  left: 0;
   width: 100%;
-  min-height: 60px;
+  height: 60px;
   @include respond-to("small") {
     display: flex;
     align-items: center;
+
+    @include respond-to("small") {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 60px;
+      z-index: 7;
+      background: white;
+    }
   }
 
   &__list {
@@ -48,20 +61,25 @@ $breakpoints: (
     justify-content: space-between;
     align-items: center;
     padding-left: 0;
+    
     @include respond-to("small") {
       display: none;
     }
 
     &__left {
+      width: 35%;
       list-style: none;
       display: flex;
+      justify-content: space-between;
 
       &__item {
-        margin-right: 28px;
+        
       }
     }
 
     &__mid {
+      display: flex;
+      justify-content: center;
     }
 
     &__right {
@@ -86,6 +104,10 @@ $breakpoints: (
       align-items: center;
       width: 90%;
       margin: 0 auto;
+
+      img {
+        cursor: pointer;
+      }
     }
   }
 }

@@ -11,11 +11,15 @@ function HomeAbout() {
 <div className="middle__top__contain">
         <div className="middle__top__contain__content">
           <h3 className="middle__top__contain__content__heading">the beauty trend</h3>
-          <p className="middle__top__contain__content__body">Treat your skin with a little love, care and makeup.</p>
+          <p className="middle__top__contain__content__body"><div className="line"></div>Treat your skin with a little love, care and makeup.</p>
           <button className="middle__top__contain__content__button">SHOP COLLECTION</button>
         </div>
         </div>
         <div className="middle__top__contain__image">
+        <div className="middle__top__contain__image__banner">
+        <h4>OUR PHILOSOPHY</h4>
+        <p>We're a wellness and beauty brand empowering eople to live a happy and healthy life.</p></div>
+
           <img src={MakeUp} alt="collection" />
         </div>
         
@@ -24,11 +28,15 @@ function HomeAbout() {
       <div className="middle__bottom__contain">
         <div className="middle__bottom__contain__content">
           <h3 className="middle__bottom__contain__content__heading">the beauty trend</h3>
-          <p className="middle__bottom__contain__content__body">Treat your skin with a little love, care and makeup.</p>
+          <p className="middle__bottom__contain__content__body"><div className='line'></div>Treat your skin with a little love, care and makeup.</p>
           <button className="middle__bottom__contain__content__button">SHOP COLLECTION</button>
         </div>
         </div>
         <div className="middle__bottom__contain__image">
+        <div className="middle__bottom__contain__image__banner">
+        <h4>OUR PHILOSOPHY</h4>
+        <p>We're a wellness and beauty brand empowering eople to live a happy and healthy life.</p></div>
+
           <img src={MakeUpTwo} alt="collection" />
         </div>
 
